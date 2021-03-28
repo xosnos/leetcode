@@ -6,17 +6,17 @@ public:
         if (nums.size() == 1) return;
         
         // Two Pointers Method
-        int j = 0;
+        int writePointer = 0;
         // Loop entire array, moving nonzeros to the front
-        for (int i = 0; i < nums.size(); ++i) {
-            if (nums[i] != 0) {
-                nums[j] = nums[i];
-                ++j;
+        for (int readPointer = 0; readPointer < nums.size(); ++readPointer) {
+            if (nums[readPointer] != 0) {
+                nums[writePointer] = nums[readPointer];
+                ++writePointer;
             }
         }
         // Change values at the end of array to zero
-        for (; j < nums.size(); ++j) {
-            nums[j] = 0;
+        for (; writePointer < nums.size(); ++writePointer) {
+            nums[writePointer] = 0;
         }
     }
 };
