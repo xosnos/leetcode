@@ -10,8 +10,7 @@ public:
         // Loop entire array, moving nonzeros to the front
         for (int readPointer = 0; readPointer < nums.size(); ++readPointer) {
             if (nums[readPointer] != 0) {
-                nums[writePointer] = nums[readPointer];
-                ++writePointer;
+                nums[writePointer++] = nums[readPointer];
             }
         }
         // Change values at the end of array to zero
