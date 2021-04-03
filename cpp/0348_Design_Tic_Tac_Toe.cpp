@@ -7,48 +7,28 @@ private:
     int n;
 public:
     /** Initialize your data structure here. */
-    TicTacToe(int n) {
-        rows.resize(n);
-        cols.resize(n);
-        diag1 = 0;
-        diag2 = 0;
-        n = 0;
-    }
+    TicTacToe(int n_in) :
+        rows(vector<int>(n_in)), cols(vector<int>(n_in)),
+        diag1(0), diag2(0), n(n_in) {}
     void insert(int row, int col, int player) {
-        if (player == 1) {
-            ++rows[row];
-            ++cols[col];
-            if (row == col) {
-                ++diag1;
-            } else if (row + col == n) {
-                ++diag2;
-            }
-        } else if (player == 2) {
-            --rows[row];
-            --cols[col];
-            if (row == col) {
-                --diag1;
-            } else if (row + col == n) {
-                --diag2;
-            }
-        }
+        rows[row] += (player == 1 ? 1 : -1);
+        cols[col] += (player == 1 ? 1 : -1);
+        if (row == col) diag1 += (player == 1 ? 1 : -1);
+        if (row + col == n - 1) diag2 += (player == 1 ? 1 : -1);
     }
     int check(int row, int col) {
-        //Check Diagonals
+        if (rows[row] == n) return 1;
+        else if (rows[row] == -n) return 2;
+        if (cols[col] == n) return 1;
+        else if (cols[col] == -n) return 2;
         if (row == col) {
             if (diag1 == n) return 1;
             else if (diag1 == -n) return 2;
-        } else if (row + col == n) {
+        }
+        if (row + col == n - 1) {
             if (diag2 == n) return 1;
             else if (diag2 == -n) return 2;
         }
-        
-        //Check Rows
-        if (rows[row] == n) return 1;
-        else if (rows[row] == -n) return 2;
-        //Check Columns
-        if (cols[col] == n) return 1;
-        else if (cols[col] == -n) return 2;
         return 0;
     }
     
@@ -63,8 +43,7 @@ public:
                 2: Player 2 wins. */
     int move(int row, int col, int player) {
         insert(row, col, player);
-        int c = check(row, col);
-        return c;
+        return check(row, col);
     }
 };
 
