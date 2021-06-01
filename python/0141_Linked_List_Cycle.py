@@ -17,3 +17,6 @@ class Solution:
             fastPointer = fastPointer.next.next
             slowPointer = slowPointer.next
         return False
+
+# O(n) Time
+# O(1) Space
