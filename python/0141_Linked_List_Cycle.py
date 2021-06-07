@@ -8,14 +8,13 @@ class Solution:
     def hasCycle(self, head: ListNode) -> bool:
         if not head or not head.next:
             return False
-        fastPointer = head.next
-        slowPointer = head
-        while fastPointer and fastPointer.next:
-            if (fastPointer == slowPointer or
-                    fastPointer.next == slowPointer):
+        slow = head
+        fast = head.next
+        while slow and fast and fast.next:
+            if fast is slow or fast.next is slow:
                 return True
-            fastPointer = fastPointer.next.next
-            slowPointer = slowPointer.next
+            slow = slow.next
+            fast = fast.next.next
         return False
 
 # O(n) Time
