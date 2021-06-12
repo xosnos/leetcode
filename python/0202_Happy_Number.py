@@ -7,3 +7,6 @@ class Solution:
             memory.add(n)
             n = sum([int(d) * int(d) for d in str(n)])
         return True
+
+# O(log(N)) Time
+# O(log(N)) Space
