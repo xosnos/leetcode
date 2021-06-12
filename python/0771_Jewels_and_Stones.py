@@ -6,3 +6,6 @@ class Solution:
             if stone in chest:
                 count += 1
         return count
+
+# O(J + S) Time
+# O(J) Space
