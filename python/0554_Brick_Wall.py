@@ -1,3 +1,6 @@
+import collections
+from typing import List
+
 class Solution:
     def leastBricks(self, wall: List[List[int]]) -> int:
         colTotal = collections.defaultdict(int)
