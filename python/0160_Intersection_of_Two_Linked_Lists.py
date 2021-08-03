@@ -6,12 +6,12 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-        def getLength(self, head):
-            length = 0
-            while head:
-                length += 1
-                head = head.next
-            return length
-        lengthA = getLength(headA)
-        lengthB = getLength(headB)
-        if 
+        pA = headA
+        pB = headB
+        while pA != pB:
+            pA = headB if pA is None else pA.next
+            pB = headA if pB is None else pB.next
+        return pA
+
+# O(N + M) Time
+# O(1) Space
